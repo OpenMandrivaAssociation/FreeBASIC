@@ -22,7 +22,6 @@ Source0:	https://download.sourceforge.net/fbc/FreeBASIC-%{version}-source.tar.xz
 %else
 Source0:	https://download.sourceforge.net/fbc/FreeBASIC-%{version}-source-bootstrap.tar.xz
 %endif
-Source100:	%{name}.rpmlintrc
 
 Patch0:	 %{oname}-1.10.1-fbhelp_makefile.patch
 Patch1:	 %{oname}-1.10.1-fbdoc_makefile.patch
