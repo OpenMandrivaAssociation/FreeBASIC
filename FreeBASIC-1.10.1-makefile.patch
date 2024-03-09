@@ -1,0 +1,12 @@
+--- b/makefile
++++ b/makefile
+@@ -129,7 +129,7 @@
+ FBFLAGS := -maxerr 1
+ AS = $(BUILD_PREFIX)as
+ AR = $(BUILD_PREFIX)ar
+-CC = $(BUILD_PREFIX)gcc
++CC = $(BUILD_PREFIX)gcc
+ prefix := /usr/local
+ 
+ # Determine the makefile's directory, this may be a relative path when
+

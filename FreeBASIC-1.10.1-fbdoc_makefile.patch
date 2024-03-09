@@ -1,0 +1,20 @@
+--- a/doc/fbdoc/makefile
++++ b/doc/fbdoc/makefile
+@@ -8,14 +8,14 @@
+     MAKEOPTS += USE_PCRE_STATIC=1
+ endif 
+ 
+-FBFLAGS += -exx -g -i ../libfbdoc
++FBFLAGS := -exx -g -i ../libfbdoc
+ ifdef HAVE_MYSQL
+     FBFLAGS += -d HAVE_MYSQL -l mysql
+ endif
+ FBFLAGS += -p ../libfbdoc -l fbdoc
+ 
+ $(FBDOC): fbdoc.bas ../libfbdoc/libfbdoc.a
+-	$(FBC) $(FBFLAGS) $< -x $@
++	$(FBC) $(FBFLAGS) $^ -x $@
+ 
+ ../libfbdoc/libfbdoc.a:
+ 	cd ../libfbdoc && $(MAKE) FBC="$(FBC)" $(MAKEOPTS)
+
