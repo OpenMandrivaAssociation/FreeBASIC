@@ -46,6 +46,7 @@ BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(mariadb)
 BuildRequires:	pkgconfig(libpcre)
+BuildRequires:	zip
 
 Requires:	%{name}-rtlib = %{version}
 Requires:	%{name}-gfxlib2 = %{version}
