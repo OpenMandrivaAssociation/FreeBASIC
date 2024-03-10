@@ -54,7 +54,7 @@ Requires:	%{name}-gfxlib2 = %{version}
 %{oname} is a free, easy-to-use tool to help you collect, organize, cite,
 and share your research sources.
 
-%files compiler
+%files
 %license doc/lgpl.txt
 %doc changelog.txt readme.txt todo.txt
 %{_bindir}/%{compiler}
