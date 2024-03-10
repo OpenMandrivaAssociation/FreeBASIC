@@ -1,0 +1,11 @@
+--- a/doc/fbhelp/fbhelp.bas
++++ b/doc/fbhelp/fbhelp.bas
+@@ -123,7 +123,7 @@ end enum
+ 
+ 	end if
+ 
+-	pexepath = FixPath( exepath )
++	pexepath = FixPath( "/usr/share/fbhelp/fbhelp" )
+ 	filename = pExePath + "fbhelp.dat"
+ 
+ 	if( HelpFile_Open( filename, TRUE ) = FALSE ) then
