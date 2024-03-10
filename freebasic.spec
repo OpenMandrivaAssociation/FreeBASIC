@@ -291,6 +291,10 @@ install -pm 0755 -d %{buildroot}%{_datadir}/pixmaps/
 install -pm 644 contrib/fblogo.xpm %{buildroot}%{_datadir}/pixmaps/%{compiler}.xpm
 
 %check
+%if "%{_lib}" == "lib64"
+export ENABLE_LIB64=1
+%endif
+
 # local compiler
 %if "%{_lib}" == "lib64"
 FBC="../bin/%{compiler} LD_PATH=lib/freebasic/linux-x86_64;lib64/freebasic/linux-x86_64;"
