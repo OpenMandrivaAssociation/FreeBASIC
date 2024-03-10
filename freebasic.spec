@@ -25,9 +25,9 @@ Source0:	https://download.sourceforge.net/fbc/FreeBASIC-%{version}-source.tar.xz
 %else
 Source0:	https://download.sourceforge.net/fbc/FreeBASIC-%{version}-source-bootstrap.tar.xz
 %endif
-Patch0:	%{oname}-1.10.1-makefile.patch
-Patch1:	%{oname}-1.10.1-fbdoc_makefile.patch
-Patch2:	%{oname}-1.10.1-fbhelp_path.patch
+Patch0:		freebasic-1.10.1-makefile.patch
+Patch1:		freebasic-1.10.1-fbdoc_makefile.patch
+Patch2:		freebasic-1.10.1-fbhelp_path.patch
 
 BuildRequires:	binutils
 BuildRequires:	gpm-devel
@@ -45,6 +45,7 @@ BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(mariadb)
+BuildRequires:	pkgconfig(libpcre)
 
 Requires:	%{name}-rtlib = %{version}
 Requires:	%{name}-gfxlib2 = %{version}
