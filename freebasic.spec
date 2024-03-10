@@ -143,9 +143,11 @@ Old-style utility for access to %{oname} documentation.
 find . \( -name \*.a -o -name \*.o -o -name \*.so -o -name fbc \) -type f -delete
 find . -name deleteme.txt -type f -delete
 
-# fix path for x86_64
+# fix path for 64bit archs
+%if %{with bootstrap}
 %if "%{_lib}" == "lib64"
 sed -i -e 's|"lib"|"lib64"|g' bootstrap/linux-x86_64/fbc.c
+%endif
 %endif
 
 %build
