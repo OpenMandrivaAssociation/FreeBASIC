@@ -34,6 +34,7 @@ BuildRequires:	gpm-devel
 %if ! %{with bootstrap}
 BuildRequires:	freebasic
 %endif
+BuildRequires:	imagemagick
 BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
