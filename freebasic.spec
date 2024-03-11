@@ -266,7 +266,7 @@ cp -ar examples/ %{buildroot}/%{_datadir}/%{name}/
 find %{buildroot}/%{_datadir}/%{name}/examples/ -name deleteme.txt
 
 # html docs
-install -om 0755 -d %{buildroot}/%{_datadir}/doc/%{name}/html/
+install -pm 0755 -d %{buildroot}/%{_datadir}/doc/%{name}/html/
 unzip doc/manual/FB-manual-%{version}-html.zip -d %{buildroot}/%{_datadir}/doc/%{name}/html/
 ln -sf 00index.html %{buildroot}/%{_datadir}/doc/%{name}/html/index.html
 
