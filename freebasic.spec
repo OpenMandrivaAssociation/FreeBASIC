@@ -1,4 +1,5 @@
-%bcond_without bootstrap
+# fbc requires itslef to be build, so ...
+%bcond_with bootstrap
 
 %global oname FreeBASIC
 %global name %(echo %oname | tr [:upper:] [:lower:])
@@ -17,7 +18,7 @@
 Summary:	A FreeBASIC compiler
 Name:		%{name}
 Version:	1.10.1
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Development/Other
 Url:		https://freebasic.net
