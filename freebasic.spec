@@ -4,10 +4,11 @@
 %global name %(echo %oname | tr [:upper:] [:lower:])
 
 # set arch
-%ifarch x86_64
+%ifarch x86_64 znver1
 %global fbarch x86_64
-%else
-%global fbarch x86
+%endif
+%ifarch aarch64
+%global fbarch aarch64
 %endif
 
 # compiler name
@@ -149,7 +150,7 @@ find . -name deleteme.txt -type f -delete
 # fix path for 64bit archs
 %if %{with bootstrap}
 %if "%{_lib}" == "lib64"
-sed -i -e 's|"lib"|"lib64"|g' bootstrap/linux-x86_64/fbc.c
+sed -i -e 's|"lib"|"lib64"|g' bootstrap/linux-%{fbarch}/fbc.c
 %endif
 %endif
 
@@ -224,13 +225,11 @@ FBC=./bin/fbc
 #	html
 %make_build -C doc/manual FB-manual-%{version}-html.zip
 #	fbhelp
-#make -C doc/manual fbhelp.daz
 %make_build -C doc/manual FB-manual-%{version}-fbhelp.zip
 #	txt
-#make -C doc/manual FB-manual-%{version}.txt
 %make_build -C doc/manual FB-manual-%{version}-txt.zip
 #	wakka
-##make -C doc/manual FB-manual-%{version}-wakka.zip
+#make -C doc/manual FB-manual-%{version}-wakka.zip
 #	chm format (FIXME: substitute hhc with ... )
 #make -C doc/manual FB-manual-%{version}.chm
 #make -C doc/manual FB-manual-%{version}-chm.zip
@@ -251,15 +250,15 @@ export ENABLE_LIB64=1
 %make_install install-gfxlib2 prefix="%{_prefix}"
 
 # fbhelp
-install -dm 0755 %{buildroot}/%{_bindir}/
+install -pm 0755 -d %{buildroot}/%{_bindir}/
 install -pm 0755 doc/fbhelp/fbhelp %{buildroot}/%{_bindir}/
 
 # manual
-install -dm 0755 %{buildroot}/%{_mandir}/man1/
+install -pm 0755 -d %{buildroot}/%{_mandir}/man1/
 install -pm 0644 doc/fbc.1 %{buildroot}/%{_mandir}/man1/
 
 # examples
-install -dm 0755 %{buildroot}/%{_datadir}/%{name}/
+install -pm 0755 -d %{buildroot}/%{_datadir}/%{name}/
 #install -dm 644 examples/ %{buildroot}/%{_datadir}/%{name}/
 cp -ar examples/ %{buildroot}/%{_datadir}/%{name}/
 
@@ -267,13 +266,13 @@ cp -ar examples/ %{buildroot}/%{_datadir}/%{name}/
 find %{buildroot}/%{_datadir}/%{name}/examples/ -name deleteme.txt
 
 # html docs
-install -dm 0755 %{buildroot}/%{_datadir}/doc/%{name}/html/
+install -om 0755 -d %{buildroot}/%{_datadir}/doc/%{name}/html/
 unzip doc/manual/FB-manual-%{version}-html.zip -d %{buildroot}/%{_datadir}/doc/%{name}/html/
 ln -sf 00index.html %{buildroot}/%{_datadir}/doc/%{name}/html/index.html
 
 # fbhelp docs
-install -dm 755 %{buildroot}/%{_datadir}/fbhelp/fbhelp/
-install -pm 644 doc/manual/fbhelp.daz %{buildroot}/%{_datadir}/fbhelp/fbhelp/
+install -pm 0755 -d %{buildroot}/%{_datadir}/fbhelp/fbhelp/
+install -pm 0644 doc/manual/fbhelp.daz %{buildroot}/%{_datadir}/fbhelp/fbhelp/
 
 # icons
 #	hicolor
@@ -296,11 +295,7 @@ export ENABLE_LIB64=1
 %endif
 
 # local compiler
-%if "%{_lib}" == "lib64"
-FBC="../bin/%{compiler} LD_PATH=lib/freebasic/linux-x86_64;lib64/freebasic/linux-x86_64;"
-%else
-FBC="../bin/%{compiler} LD_PATH=lib/freebasic/linux-i686;lib64/freebasic/linux-x86_64;"
-%endif
+FBC="../bin/%{compiler} LD_PATH=lib/freebasic/linux-%{fbarch}"
 
 # be verbose
 export V=1
