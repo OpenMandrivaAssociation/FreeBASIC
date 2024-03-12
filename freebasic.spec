@@ -27,7 +27,7 @@ Source0:	https://download.sourceforge.net/fbc/FreeBASIC-%{version}-source.tar.xz
 %else
 Source0:	https://download.sourceforge.net/fbc/FreeBASIC-%{version}-source-bootstrap.tar.xz
 %endif
-Patch0:		freebasic-1.10.1-makefile.patch
+Patch0:		freebasic-1.10.1-use_default_cc.patch
 Patch1:		freebasic-1.10.1-fbdoc_makefile.patch
 Patch2:		freebasic-1.10.1-fbhelp_path.patch
 
