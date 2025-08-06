@@ -17,8 +17,8 @@
 
 Summary:	A FreeBASIC compiler
 Name:		%{name}
-Version:	1.10.1
-Release:	2
+Version:	1.10.2
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Development/Other
 Url:		https://freebasic.net
